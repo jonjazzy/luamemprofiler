@@ -10,9 +10,9 @@
 CC = gcc
 CFLAGS = -g -Wall -ansi -pedantic -fPIC -shared
 
-# For SDL1.2, use `sdl-config --libs` and `sdl-config --cflags`
-SDL_LIBS = $(shell sdl-config --libs) -lSDL_ttf
-SDL_CFLAGS = $(shell sdl-config --cflags)
+# For SDL2, use `sdl2-config --libs` and `sdl2-config --cflags`
+SDL_LIBS = $(shell sdl2-config --libs) -lSDL2_ttf -lSDL2
+SDL_CFLAGS = $(shell sdl2-config --cflags)
 
 # Assuming LUA_DIR is the directory containing the Lua headers, the default path is correct
 LUA_DIR = /usr/include/lua5.2
