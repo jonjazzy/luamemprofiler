@@ -10,12 +10,14 @@
 CC = gcc
 CFLAGS = -g -Wall -ansi -pedantic -fPIC -shared
 
-# used the 'sdl2-config' output + the '-lSDL2_ttf'
-SDL_LIBS = -L/home/pmusa/Programs/SDL/lib -Wl,-rpath,/home/pmusa/Programs/SDL/lib -lSDL2 -lSDL2_ttf -lpthread
-SDL_CFLAGS = -I/home/pmusa/Programs/SDL/include/SDL2 -D_REENTRANT
+# For SDL1.2, use `sdl-config --libs` and `sdl-config --cflags`
+SDL_LIBS = $(shell sdl-config --libs) -lSDL_ttf
+SDL_CFLAGS = $(shell sdl-config --cflags)
 
+# Assuming LUA_DIR is the directory containing the Lua headers, the default path is correct
 LUA_DIR = /usr/include/lua5.2
 LUA_CFLAGS = -I$(LUA_DIR)
+# Linking against the Lua library should be done via `-llua5.2` which you already have set
 LUA_LIBS = -llua5.2
 
 all: luamemprofiler.so
